@@ -31,7 +31,7 @@ class ResumableWidget(FileInput):
         upload_to = get_upload_to(
             self.attrs['content_type_id'], self.attrs['field_name'])
         storage = get_storage(upload_to)
-        if value:
+        if value and hasattr(value, 'name'):
             file_name = os.path.basename(value.name)
             file_url = storage.url(file_name)
         else:
